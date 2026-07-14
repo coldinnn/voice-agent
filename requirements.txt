@@ -1,0 +1,7 @@
+anthropic
+openai-whisper
+sounddevice
+soundfile
+numpy
+edge-tts
+scipy
