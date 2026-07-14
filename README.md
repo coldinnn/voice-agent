@@ -22,7 +22,7 @@ Multi-turn: conversation history is preserved across turns so Claude remembers c
 
 ## Setup
 
-**Prerequisites:** Python 3.9+, `ffmpeg` installed (`brew install ffmpeg` on Mac)
+**Prerequisites:** Python 3.9+
 
 ```bash
 git clone https://github.com/coldinnn/voice-agent
@@ -72,7 +72,7 @@ Claude: Tokyo's greater metropolitan area is home to roughly 37 to 38 million pe
 | STT | [OpenAI Whisper](https://github.com/openai/whisper) `base` model | Runs locally, no API cost, fast enough for real-time use |
 | LLM | Claude Opus 4.8 via Anthropic API | Streaming, adaptive thinking |
 | TTS | [edge-tts](https://github.com/rany2/edge-tts) | Free, high-quality Microsoft voices, no API key needed |
-| Audio I/O | `sounddevice` + `soundfile` | Cross-platform mic recording and WAV I/O |
+| Audio I/O | `sounddevice` | Cross-platform mic recording with energy-based VAD |
 
 ## Project structure
 

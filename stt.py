@@ -1,7 +1,5 @@
-import tempfile
 import numpy as np
 import sounddevice as sd
-import soundfile as sf
 import whisper
 
 _model = None
@@ -52,7 +50,7 @@ def record_until_silence(
 
 def transcribe(audio: np.ndarray, sample_rate: int = 16000) -> str:
     model = _get_model()
-    with tempfile.NamedTemporaryFile(suffix=".wav", delete=False) as f:
-        sf.write(f.name, audio, sample_rate)
-        result = model.transcribe(f.name, fp16=False)
+    # Whisper expects float32 mono at 16kHz — pass array directly to skip ffmpeg
+    audio_16k = audio.astype(np.float32)
+    result = model.transcribe(audio_16k, fp16=False)
     return result["text"].strip()
